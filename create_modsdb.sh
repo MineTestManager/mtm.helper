@@ -7,7 +7,7 @@ url="https://content.minetest.net/api/packages/?type=mod&hide=nonfree"
 curl "$url" > "$jsonfile"
 
 
-echo "ingnore if not empty;modname;modurl;dependencies;moddesc;Tags;Modpack;ModDB URL;Forum URL;Notes;edited;imported" > created_moddb.csv
+echo "ignore if not empty;modname;modurl;dependencies;moddesc;Tags;Modpack;ModDB URL;Forum URL;Notes;edited;imported" > created_moddb.csv
 for k in $(jq ' keys | .[]' $jsonfile); do
     value=$(jq -r ".[$k]" $jsonfile);
     name=$(jq -r '.name' <<< "$value");
